@@ -1,0 +1,24 @@
+import re
+
+def check_pass(password):
+    # checking the  Minimum length
+    if len(password) < 8:
+        return "Weak: Password must be at least 8 characters long."
+
+    # Checks for uppercase and lowercase letters
+    if not re.search("[a-z]", password) or not re.search("[A-Z]", password):
+        return "Weak: Password must contain both uppercase and lowercase letters."
+
+    # Checks for a numbers
+    if not re.search("[0-9]", password):
+        return "Weak: Password must contain at least one number."
+
+    # Checks for a special characters
+    if not re.search("[!@#$%^&*()-_+=.><]", password):
+        return "Weak: Password must contain at least one special character."
+
+    # Strong password
+    return "Strong: Password meets all criteria."
+
+password = input("Enter your password: ")
+print(check_pass(password))
